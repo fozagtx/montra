@@ -1,0 +1,52 @@
+/scarb.lock
+/.starknet_artifacts/
+/.cairo-build
+/.cairo_env
+.cairo_cache
+.cairo_coverage
+
+# === Starknet Foundry ===
+/snfoundry_cache/
+/snforge_output/
+/sncast_output/
+
+# === Logs and temp files ===
+*.log
+*.tmp
+*.swp
+*.bak
+*.out
+
+# === Python virtualenvs (if you use scripts) ===
+.venv/
+venv/
+__pycache__/
+*.pyc
+
+# === Node.js (if you use frontend or tooling) ===
+node_modules/
+dist/
+build/
+
+# === IDE / Editor configs ===
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# === OS-generated files ===
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# === Environment / Secrets ===
+.env
+.env.local
+.env.*
+!.env.example
+
+# === Misc ===
+*.lock
+*.zip
+*.tar.gz
+*.bak
