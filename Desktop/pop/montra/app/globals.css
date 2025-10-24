@@ -1,0 +1,58 @@
+@import "tailwindcss";
+
+@keyframes gradientMove {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+.animate-gradient-move {
+    background-size: 200% 200%;
+    animation: gradientMove 3s ease infinite;
+}
+
+/*@theme {
+    --background: #f9fafb;
+    --foreground: #111827;
+    --card: #ffffff;
+    --card-foreground: #111827;
+    --popover: #ffffff;
+    --popover-foreground: #111827;
+    --primary: #111827;
+    --primary-foreground: #ffffff;
+    --secondary: #f9fafb;
+    --secondary-foreground: #111827;
+    --muted: #6b7280;
+    --muted-foreground: #6b7280;
+    --accent: #f9fafb;
+    --accent-foreground: #111827;
+    --destructive: #ef4444;
+    --destructive-foreground: #ffffff;
+    --border: rgba(0, 0, 0, 0.05);
+    --input: rgba(0, 0, 0, 0.05);
+    --ring: rgba(147, 197, 253, 0.5);
+
+    --radius: 0.5rem;
+
+    --font-sans: "Inter", "SF Pro Display", "Helvetica Neue", sans-serif;
+}*/
+
+body {
+    background-color: var(--background);
+    color: var(--foreground);
+    font-family: var(--font-sans);
+}
+
+.bg-gradient {
+    background: linear-gradient(
+        180deg,
+        rgba(255, 255, 255, 1) 0%,
+        rgba(245, 247, 250, 1) 100%
+    );
+}
