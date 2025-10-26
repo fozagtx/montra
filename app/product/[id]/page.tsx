@@ -7,6 +7,7 @@ import { CheckCircle2, ExternalLink } from "lucide-react";
 import { getSupabaseServerClient } from "@/lib/supabase/server";
 import { PushChainButton } from "@/components/buttonProvider";
 import { Skeleton } from "@/components/ui/skeleton";
+import { getPushChainConfig } from "@/lib/pushchain/config";
 
 async function getProduct(id: string) {
   try {
@@ -89,6 +90,20 @@ export default async function ProductPage(props: { params: Promise<{ id: string 
 
   const paymentLink = `${baseUrl}/product/${id}`;
 
+  const { contract: contractConfig, network: networkConfig } = getPushChainConfig();
+  const priceUsdcValue =
+    typeof product.price_usdc === "number"
+      ? product.price_usdc.toString()
+      : product.price_usdc ?? "0";
+  const parsedPrice = Number(priceUsdcValue);
+  const formattedPriceUsdc = Number.isNaN(parsedPrice)
+    ? priceUsdcValue
+    : parsedPrice.toFixed(2);
+  const payoutAddress =
+    typeof product.payment_address === "string" && /^0x[a-fA-F0-9]{40}$/.test(product.payment_address)
+      ? (product.payment_address as `0x${string}`)
+      : null;
+
   await new Promise((resolve) => setTimeout(resolve, 1500));
 
   return (
@@ -108,7 +123,7 @@ export default async function ProductPage(props: { params: Promise<{ id: string 
                 </div>
 
                 <Badge variant="outline" className="text-base px-3 py-1">
-                  ${product.price_usdc} USDC
+                  ${formattedPriceUsdc} USDC
                 </Badge>
               </div>
             </div>
@@ -166,9 +181,20 @@ export default async function ProductPage(props: { params: Promise<{ id: string 
                         <span>You'll receive instant access to download your product</span>
                       </div>
                     </div>
-                    <div className="flex justify-center">
-                      <PushChainButton />
-                    </div>
+                    {payoutAddress ? (
+                      <PushChainButton
+                        productId={id}
+                        productTitle={product.title}
+                        priceUsdc={priceUsdcValue}
+                        payoutAddress={payoutAddress}
+                        contract={contractConfig}
+                        network={networkConfig}
+                      />
+                    ) : (
+                      <div className="w-full rounded-lg bg-muted/40 p-4 text-sm text-muted-foreground">
+                        The creator has not configured a valid payout address yet. Please check back later.
+                      </div>
+                    )}
                   </>
                 )}
               </CardContent>
