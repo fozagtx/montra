@@ -7,23 +7,18 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
-node_modules
-dist
-dist-ssr
-*.local
+# Node modules
+node_modules/
 
-# Editor directories and files
-.vscode/*
-!.vscode/extensions.json
-.idea
-.DS_Store
-*.suo
-*.ntvs*
-*.njsproj
-*.sln
-*.sw?
+# Build output
+.next/
+out/
 
-# Environment variables
+# Production
+build/
+dist/
+
+# Environment files
 .env
 .env.local
 .env.development.local
@@ -31,9 +26,23 @@ dist-ssr
 .env.production.local
 
 # Hardhat files
-cache
-artifacts
-typechain-types
+cache/
+artifacts/
+typechain-types/
 
-# OS generated files
+# Editor settings
+.vscode/*
+!.vscode/extensions.json
+.idea/
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# OS files
 Thumbs.db
+
+# Misc
+*.local

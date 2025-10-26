@@ -18,19 +18,10 @@ export default async function HomePage() {
       {/* Header */}
       <header className="relative z-20 mx-auto w-full max-w-6xl px-6 py-8 md:px-8">
         <nav className="relative flex items-center justify-between text-sm font-medium rounded-full bg-white/80 backdrop-blur-md border border-gray-200 shadow-sm px-6 py-3">
-          <Link
-            href="/"
-            className="flex items-center gap-3 text-2xl text-gray-900"
-          >
-            <Image
-              src="/logo.jpeg"
-              alt="Monetize logo"
-              width={36}
-              height={36}
-              className="rounded-full"
-            />
+          <Link href="/" className="flex items-center gap-3 text-2xl text-gray-900">
+            <Image src="/logo.jpeg" alt="Monetize logo" width={36} height={36} className="rounded-full" />
             <h1 className="flex items-center justify-center rounded-full bg-white px-3 py-1 text-base font-semibold tracking-tight shadow-sm">
-              Monetize
+              Montra{" "}
             </h1>
           </Link>
 
@@ -67,16 +58,14 @@ export default async function HomePage() {
       {/* Hero Section */}
       <main className="relative z-10 mx-auto flex w-full max-w-6xl flex-1 flex-col items-center justify-center px-6 pb-32 pt-10 text-center md:px-8">
         <div className="mb-4 relative z-10 animate-pulse text-gray-500">
-          Upcoming: Monetize Discord communities
+          Upcoming: Monetize Discord communities on any chain
         </div>
 
         <RotatingHeroText />
 
         <p className="mt-6 max-w-2xl text-pretty text-lg text-gray-600 sm:text-xl relative z-10">
-          Add a product to start selling!
+          Add a product to start selling multiple chain users
         </p>
-
-        {/* Video Card */}
         <div className="mt-20 flex flex-col items-center gap-6 w-full relative z-10">
           <div className="relative w-full max-w-5xl mx-auto rounded-[1.75rem] bg-white/90 shadow-[0_4px_20px_rgba(0,0,0,0.08)] border border-gray-200 backdrop-blur-md pt-7 pb-4 px-4 z-10">
             <div className="absolute top-3 left-6 flex gap-2">
@@ -101,7 +90,7 @@ export default async function HomePage() {
 
       {/* Footer */}
       <footer className="relative z-20 mx-auto w-full max-w-6xl px-6 pb-8 md:px-8 flex items-center justify-between text-sm text-gray-500">
-        <p className="animate-pulse">powered by Base</p>
+        <p className="animate-pulse">powered by PushChain</p>
         <div className="flex items-center gap-4">
           <Link href="#" className="hover:text-gray-900">
             X

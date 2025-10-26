@@ -1,42 +1,27 @@
 {
   "compilerOptions": {
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "allowJs": true,
     "target": "ES2022",
-    "module": "commonjs",
-    "lib": ["ES2022"],
-    "moduleResolution": "node",
-    "resolveJsonModule": true,
-    "allowSyntheticDefaultImports": true,
-    "esModuleInterop": true,
-    "forceConsistentCasingInFileNames": true,
-    "strict": true,
     "skipLibCheck": true,
-    "declaration": true,
-    "declarationMap": true,
-    "outDir": "./dist",
-    "rootDir": "./",
-    "typeRoots": ["./node_modules/@types"],
-    "baseUrl": "./",
+    "strict": true,
+    "noEmit": true,
+    "esModuleInterop": true,
+    "module": "esnext",
+    "moduleResolution": "bundler",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "jsx": "react-jsx",
+    "incremental": true,
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ],
     "paths": {
-      "@openzeppelin/*": ["./typechain-types/@openzeppelin/*"],
-      "contracts/*": ["./typechain-types/contracts/*"],
-      "factories/*": ["./typechain-types/factories/*"]
+      "@/*": ["./*"]
     }
   },
-  "include": [
-    "./scripts/**/*",
-    "./test/**/*",
-    "./typechain-types/**/*",
-    "./hardhat.config.ts"
-  ],
-  "exclude": [
-    "node_modules",
-    "dist",
-    "artifacts",
-    "cache",
-    "coverage"
-  ],
-  "ts-node": {
-    "esm": false,
-    "experimentalSpecifierResolution": "node"
-  }
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", ".next/dev/types/**/*.ts"],
+  "exclude": ["node_modules"]
 }

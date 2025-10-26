@@ -60,15 +60,7 @@ export function DashboardSidebar({ user }: DashboardSidebarProps) {
     },
     {
       title: "Discord Community",
-      icon: (
-        <Image
-          src="/discord.png"
-          alt="Discord"
-          width={16}
-          height={16}
-          className="rounded-sm"
-        />
-      ),
+      icon: <Image src="/discord.png" alt="Discord" width={16} height={16} className="rounded-sm" />,
       href: "/dashboard/discord",
     },
   ];
@@ -81,36 +73,20 @@ export function DashboardSidebar({ user }: DashboardSidebarProps) {
     }
   };
 
-  const userInitials = user.email
-    ? user.email.split("@")[0].slice(0, 2).toUpperCase()
-    : "U";
+  const userInitials = user.email ? user.email.split("@")[0].slice(0, 2).toUpperCase() : "U";
 
   return (
-    <Sidebar
-      variant="floating"
-      collapsible="icon"
-      className="bg-gradient-to-b from-white to-gray-50 backdrop-blur-lg"
-    >
+    <Sidebar variant="floating" collapsible="icon" className="bg-gradient-to-b from-white to-gray-50 backdrop-blur-lg">
       <SidebarHeader>
         <SidebarMenu>
           <SidebarMenuItem>
             <div className="flex items-center gap-2 group-data-[collapsible=icon]:justify-center">
               <SidebarTrigger className="shrink-0" />
-              <SidebarMenuButton
-                size="lg"
-                asChild
-                className="flex-1 group-data-[collapsible=icon]:hidden"
-              >
+              <SidebarMenuButton size="lg" asChild className="flex-1 group-data-[collapsible=icon]:hidden">
                 <Link href="/" className="flex items-center gap-2">
-                  <Image
-                    src="/logo.jpeg"
-                    alt="Monetize Logo"
-                    width={32}
-                    height={32}
-                    className="rounded-md"
-                  />
+                  <Image src="/logo.jpeg" alt="Monetize Logo" width={32} height={32} className="rounded-md" />
                   <div className="grid flex-1 text-left text-sm leading-tight">
-                    <span className="truncate font-semibold">Monetize</span>
+                    <span className="truncate font-semibold">Montra</span>
                   </div>
                 </Link>
               </SidebarMenuButton>
@@ -127,15 +103,8 @@ export function DashboardSidebar({ user }: DashboardSidebarProps) {
                 <SidebarMenuItem key={item.href}>
                   <SidebarMenuButton
                     asChild
-                    isActive={
-                      item.href === "/dashboard"
-                        ? pathname === item.href
-                        : pathname.startsWith(item.href)
-                    }
-                    className={cn(
-                      pathname.startsWith(item.href) &&
-                        "bg-[#F9FAFB] text-primary font-medium",
-                    )}
+                    isActive={item.href === "/dashboard" ? pathname === item.href : pathname.startsWith(item.href)}
+                    className={cn(pathname.startsWith(item.href) && "bg-[#F9FAFB] text-primary font-medium")}
                   >
                     <Link href={item.href} className="flex items-center gap-2">
                       {item.icon}
@@ -159,17 +128,13 @@ export function DashboardSidebar({ user }: DashboardSidebarProps) {
                   className="data-[state=open]:bg-sidebar-accent data-[state=open]:text-sidebar-accent-foreground"
                 >
                   <Avatar className="h-8 w-8 rounded-lg">
-                    <AvatarFallback className="rounded-lg">
-                      {userInitials}
-                    </AvatarFallback>
+                    <AvatarFallback className="rounded-lg">{userInitials}</AvatarFallback>
                   </Avatar>
                   <div className="grid flex-1 text-left text-sm leading-tight">
                     <span className="truncate font-semibold">
                       {user.user_metadata?.name || user.email?.split("@")[0]}
                     </span>
-                    <span className="truncate text-xs text-muted-foreground">
-                      {user.email}
-                    </span>
+                    <span className="truncate text-xs text-muted-foreground">{user.email}</span>
                   </div>
                 </SidebarMenuButton>
               </DropdownMenuTrigger>
@@ -183,17 +148,13 @@ export function DashboardSidebar({ user }: DashboardSidebarProps) {
                 <DropdownMenuLabel className="p-0 font-normal">
                   <div className="flex items-center gap-2 px-1 py-1.5 text-left text-sm">
                     <Avatar className="h-8 w-8 rounded-lg">
-                      <AvatarFallback className="rounded-lg">
-                        {userInitials}
-                      </AvatarFallback>
+                      <AvatarFallback className="rounded-lg">{userInitials}</AvatarFallback>
                     </Avatar>
                     <div className="grid flex-1 text-left text-sm leading-tight">
                       <span className="truncate font-semibold">
                         {user.user_metadata?.name || user.email?.split("@")[0]}
                       </span>
-                      <span className="truncate text-xs text-muted-foreground">
-                        {user.email}
-                      </span>
+                      <span className="truncate text-xs text-muted-foreground">{user.email}</span>
                     </div>
                   </div>
                 </DropdownMenuLabel>

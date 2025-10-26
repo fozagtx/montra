@@ -11,16 +11,8 @@ export default function DiscordPage() {
         transition={{ repeat: Infinity, duration: 2 }}
         className="flex flex-col items-center justify-center text-center space-y-4"
       >
-        <Image
-          src="/discord.png"
-          alt="Discord Logo"
-          width={100}
-          height={100}
-          className="drop-shadow-md"
-        />
-        <h1 className="text-2xl font-semibold text-gray-800 tracking-tight">
-          Monetize Discord Community
-        </h1>
+        <Image src="/discord.png" alt="Discord Logo" width={100} height={100} className="drop-shadow-md" />
+        <h1 className="text-2xl font-semibold text-gray-800 tracking-tight">Monetize Discord Community</h1>
         <motion.p
           animate={{ opacity: [0.5, 1, 0.5] }}
           transition={{ repeat: Infinity, duration: 1.6 }}
