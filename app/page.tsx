@@ -76,7 +76,7 @@ export default async function HomePage() {
             <div className="overflow-hidden rounded-xl border border-gray-100 mt-3">
               <iframe
                 className="w-full aspect-video rounded-xl"
-                src="https://www.youtube.com/embed/_eGTi6vJK_0?si=ipzjuPtfBhthn1hL"
+                src="https://www.youtube.com/embed/daYMtR3pi_o?si=De8vxJKRaXLzCaYK"
                 title="YouTube video player"
                 frameBorder="0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
