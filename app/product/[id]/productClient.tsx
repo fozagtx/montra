@@ -9,7 +9,18 @@ import { PushChainButton } from "@/components/buttonProvider";
 import { CheckCircle2, ExternalLink } from "lucide-react";
 import { Skeleton } from "@/components/ui/skeleton";
 import { useProduct } from "@/hooks/useProduct";
-export default function ProductClient({ id, currentUserId }: { id: string; currentUserId: string | null }) {
+import type { PushChainContractConfig, PushChainNetworkConfig } from "@/lib/pushchain/config";
+export default function ProductClient({
+  id,
+  currentUserId,
+  contractConfig,
+  networkConfig,
+}: {
+  id: string;
+  currentUserId: string | null;
+  contractConfig: PushChainContractConfig;
+  networkConfig: PushChainNetworkConfig;
+}) {
   const { product, loading, error } = useProduct(id);
 
   if (loading) return <ProductSkeleton />;
@@ -17,6 +28,19 @@ export default function ProductClient({ id, currentUserId }: { id: string; curre
 
   const isCreator = currentUserId === product.user_id;
   const paymentLink = `/product/${id}`;
+
+  const priceUsdcValue =
+    typeof product.price_usdc === "number"
+      ? product.price_usdc.toString()
+      : product.price_usdc ?? "0";
+  const parsedPrice = Number(priceUsdcValue);
+  const formattedPrice = Number.isNaN(parsedPrice)
+    ? priceUsdcValue
+    : parsedPrice.toFixed(2);
+  const payoutAddress =
+    typeof product.payment_address === "string" && /^0x[a-fA-F0-9]{40}$/.test(product.payment_address)
+      ? (product.payment_address as `0x${string}`)
+      : null;
 
   return (
     <div className="relative min-h-screen flex flex-col bg-[#F9FAFB] overflow-hidden">
@@ -44,7 +68,7 @@ export default function ProductClient({ id, currentUserId }: { id: string; curre
                   )}
                 </div>
                 <Badge variant="secondary" className="bg-gray-100 text-gray-800 font-semibold px-3 py-1">
-                  {Number(product.price_usdc).toFixed(2)} USDC
+                  {formattedPrice} USDC
                 </Badge>
               </div>
             </div>
@@ -106,9 +130,20 @@ export default function ProductClient({ id, currentUserId }: { id: string; curre
                         <span>You’ll receive instant access to download your product</span>
                       </div>
                     </div>
-                    <div className="flex justify-center">
-                      <PushChainButton />
-                    </div>
+                    {payoutAddress ? (
+                      <PushChainButton
+                        productId={id}
+                        productTitle={product.title}
+                        priceUsdc={priceUsdcValue}
+                        payoutAddress={payoutAddress}
+                        contract={contractConfig}
+                        network={networkConfig}
+                      />
+                    ) : (
+                      <div className="w-full rounded-lg bg-gray-50 border border-gray-200 p-4 text-sm text-gray-600">
+                        The creator has not configured a valid payout address yet. Please check back later.
+                      </div>
+                    )}
                   </>
                 )}
               </CardContent>
