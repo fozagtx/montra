@@ -2,7 +2,6 @@ import { NextResponse } from "next/server";
 
 import { getSupabaseServerClient } from "@/lib/supabase/server";
 import { getPushChainConfig, getPushChainPublicClient } from "@/lib/pushchain/config";
-import { uuidToBigInt } from "@/lib/pushchain/helpers";
 
 export const dynamic = "force-dynamic";
 
@@ -30,17 +29,6 @@ export async function POST(request: Request) {
       );
     }
 
-    let productBigInt: bigint;
-    try {
-      productBigInt = uuidToBigInt(productId);
-    } catch (error) {
-      console.error("[payments.verify] Invalid product id provided", error);
-      return NextResponse.json(
-        { error: "Invalid product identifier" },
-        { status: 400 },
-      );
-    }
-
     const { contract } = getPushChainConfig();
     const publicClient = getPushChainPublicClient();
 
@@ -50,7 +38,7 @@ export async function POST(request: Request) {
         abi: contract.abi,
         address: contract.address,
         functionName: contract.verifyFunction as any,
-        args: [buyer as `0x${string}`, productBigInt] as const,
+        args: [productId, buyer as `0x${string}`] as const,
       });
 
       purchaseConfirmed = Boolean(result);

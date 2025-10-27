@@ -12,7 +12,6 @@ import type {
   PushChainNetworkConfig,
 } from "@/lib/pushchain/config";
 import { Button } from "@/components/ui/button";
-import { uuidToBigInt } from "@/lib/pushchain/helpers";
 import { Loader2, Lock, Unlock } from "lucide-react";
 import {
   useCallback,
@@ -182,26 +181,18 @@ function InnerPurchaseButton({
     setError(null);
 
     try {
-      let productKey: bigint;
-      try {
-        productKey = uuidToBigInt(productId);
-      } catch (err) {
-        console.error("[PushChainButton] failed to encode product id", err);
-        setError("Unable to encode product identifier for contract call.");
-        return;
-      }
-
       const amount = parseUnits(priceUsdc, contract.paymentTokenDecimals);
 
       const data = encodeFunctionData({
         abi: contract.abi,
         functionName: contract.purchaseFunction as any,
-        args: [productKey, payoutAddress, amount] as const,
+        args: [payoutAddress, productId] as const,
       });
 
       const response = await pushChainClient.universal.sendTransaction({
         to: contract.address,
         data: data as `0x${string}`,
+        value: amount,
       });
 
       const hash = typeof response === "string" ? response : response.hash;
@@ -253,7 +244,7 @@ function InnerPurchaseButton({
       ? "Verifying purchase…"
       : purchaseVerified
         ? "Purchase verified"
-        : `Pay ${formatPriceDisplay(priceUsdc)} USDC`;
+        : `Pay ${formatPriceDisplay(priceUsdc)} PUSH`;
 
   return (
     <div className="w-full space-y-4">

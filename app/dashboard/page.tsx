@@ -87,7 +87,7 @@ export default async function DashboardPage() {
               <div className="text-3xl font-semibold text-gray-900">
                 ${totalRevenue.toFixed(2)}
               </div>
-              <p className="text-xs text-gray-500 mt-1">USDC earned</p>
+              <p className="text-xs text-gray-500 mt-1">PUSH earned</p>
             </CardContent>
           </Card>
         </div>
@@ -117,7 +117,7 @@ export default async function DashboardPage() {
                     </div>
                     <div className="flex items-center gap-4">
                       <p className="font-semibold text-gray-800">
-                        ${product.price_usdc} USDC
+                        {product.price_usdc} PUSH
                       </p>
                       <Button
                         asChild

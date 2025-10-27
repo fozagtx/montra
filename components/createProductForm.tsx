@@ -142,7 +142,7 @@ export function CreateProductForm() {
             </div>
 
             <div className="space-y-2">
-              <Label htmlFor="paymentAddress">Your Base Wallet Address</Label>
+              <Label htmlFor="paymentAddress">Your Wallet Address</Label>
               <Input
                 id="paymentAddress"
                 name="paymentAddress"
@@ -151,12 +151,12 @@ export function CreateProductForm() {
                 required
               />
               <p className="text-sm text-gray-500">
-                USDC payments will be sent to this address on Base
+                PUSH payments will be sent to this address on PushChain
               </p>
             </div>
 
             <div className="space-y-2">
-              <Label htmlFor="priceUsdc">Price (USDC)</Label>
+              <Label htmlFor="priceUsdc">Price (PUSH)</Label>
               <Input
                 id="priceUsdc"
                 name="priceUsdc"
