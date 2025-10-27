@@ -123,7 +123,7 @@ export default async function ProductPage(props: { params: Promise<{ id: string 
                 </div>
 
                 <Badge variant="outline" className="text-base px-3 py-1">
-                  ${formattedPriceUsdc} USDC
+                  {formattedPriceUsdc} PUSH
                 </Badge>
               </div>
             </div>
@@ -146,7 +146,7 @@ export default async function ProductPage(props: { params: Promise<{ id: string 
                 </li>
                 <li className="flex items-start gap-2">
                   <CheckCircle2 className="mt-0.5 h-5 w-5 text-primary" />
-                  <span className="text-muted-foreground">Secure Base network payment</span>
+                  <span className="text-muted-foreground">Secure PushChain network payment</span>
                 </li>
               </ul>
             </div>
@@ -159,7 +159,7 @@ export default async function ProductPage(props: { params: Promise<{ id: string 
                   {isCreator ? "Your Product" : "Complete Your Purchase"}
                 </CardTitle>
                 <CardDescription>
-                  {isCreator ? "Share your payment link below" : "Pay securely with USDC on Base network"}
+                  {isCreator ? "Share your payment link below" : "Pay securely with PUSH on PushChain network"}
                 </CardDescription>
               </CardHeader>
 

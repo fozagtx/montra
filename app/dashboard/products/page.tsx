@@ -50,7 +50,7 @@ export default async function ProductsPage() {
                       variant="secondary"
                       className="bg-gray-100 text-gray-800 font-semibold"
                     >
-                      {Number(product.price_usdc).toFixed(2)} USDC
+                      {Number(product.price_usdc).toFixed(2)} PUSH
                     </Badge>
                   </div>
                   <CardDescription className="line-clamp-3 text-gray-500">
